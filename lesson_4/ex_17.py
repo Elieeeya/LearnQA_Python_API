@@ -2,10 +2,11 @@ import pytest
 import requests
 from lesson_3.ex_14.lib.base_case import BaseCase
 from lesson_3.ex_14.lib.assertions import Assertions
+import allure
 
-
+@allure.epic("Cases for PUT method")
 class TestUserEdit(BaseCase):
-
+    @allure.description("Positive test: user is just created: changing a userName")
     def test_edit_just_created_user(self):
         url_create_user = 'https://playground.learnqa.ru/api/user/'
         register_data = self.prepare_registration_data()

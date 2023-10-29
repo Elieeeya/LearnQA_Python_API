@@ -1,10 +1,11 @@
+import allure
 import requests
 import pytest
 from lesson_3.ex_14.lib.base_case import BaseCase
 from lesson_3.ex_14.lib.assertions import Assertions
 from datetime import datetime
 
-
+@allure.epic("User registration cases")
 class TestUserRegister(BaseCase):
     url = 'https://playground.learnqa.ru/api/user/'
 

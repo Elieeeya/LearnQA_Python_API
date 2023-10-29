@@ -1,10 +1,13 @@
 import requests
 from lesson_3.ex_14.lib.base_case import BaseCase
 from lesson_3.ex_14.lib.assertions import Assertions
+import allure
 
 
+@allure.epic("Cases for DELETE method")
 class TestUserDelete(BaseCase):
 
+    @allure.description("This test checks DELETE method for unauthorized user")
     def test_user_delete(self):
         response = requests.post("https://playground.learnqa.ru/api/user/login",
                                  data={'email': 'vinkotov@example.com', 'password': '1234'})
@@ -19,6 +22,7 @@ class TestUserDelete(BaseCase):
         Assertions.assert_code_status(response1, 400)
         assert response1.text == "Please, do not delete test users with ID 1, 2, 3, 4 or 5."
 
+    @allure.description("This test checks DELETE user DATA for authorized user")
     def test_get_deleted_user_data(self):
         register_data = self.prepare_registration_data()
         response1 = requests.post("https://playground.learnqa.ru/api/user/", data=register_data)
